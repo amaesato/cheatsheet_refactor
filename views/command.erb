@@ -1,0 +1,39 @@
+
+<div class="wrapper left-menu">
+  <h3>man command:</h3>
+
+  <!-- <ul>
+  <% side_menu = %w(mkdir ls cd touch cp mv)  %>
+    <% side_menu.each do |list| %>
+      <li><a href=""><%= list %></a></li>
+    <% end %>
+  <ul> -->
+
+  <ul>
+    <li><a href="/command/mkdir">mkdir</a></li>
+    <li><a href="/command/ls">ls</a></li>
+    <li><a href="/command/mv">mv</a></li>
+    <li><a href="/command/pwd">pwd</a></li>
+  </ul>
+
+  <form method='post' action='/command'>
+    <input type='search' placeholder='search the man' name='search' />
+  </form>
+
+  <% if @search %>
+    <p>man search: <%= @search %></p>
+  <% end %>
+  <br />
+  <div><a href="https://www.google.com/" target="_blank">Google it</a></div>
+
+</div>
+
+<div class="container">
+  <% page = `man #{@search}` %>
+  <% if page.empty? %>
+  <h3>Command Not Found</h3>
+  <% else %>
+  <p><%= `man #{@search}` %></p>
+  <% end %>
+
+</div>

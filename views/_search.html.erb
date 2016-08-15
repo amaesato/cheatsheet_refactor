@@ -1,0 +1,6 @@
+<form method='POST' action='/search'>
+  <input type='search' placeholder='search the man' name='search' />
+</form>
+<% if @search %>
+  <strong>Your search: <%= @search %></strong>
+<% end %>
